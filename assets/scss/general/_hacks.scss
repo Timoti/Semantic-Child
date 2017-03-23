@@ -1,0 +1,22 @@
+
+
+.template-name {
+	padding: $global-padding;
+	background-color: lightYellow;
+	}
+
+.tpl-name {
+	color: lightGray;
+}
+// temporary spacing for hero
+.hero .marketing .tagline {
+	padding: $global-padding*4;
+			margin: auto;
+			float:none;
+			text-align: center;
+	> * {
+		text-align: center;
+		margin: auto;
+		}
+
+	}
