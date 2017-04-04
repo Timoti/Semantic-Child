@@ -3,30 +3,39 @@
  * Author: Tim Gummer
  * URL: http://timgummerdesign.com
  *
- * Semantique Child functions and definitions
+ * Sem Child (test clone of Semantique Child) functions and definitions
  *
  * theme as custom template tags. Others are attached to action and filter
  * Set up the theme and provides some helper functions, which are used in the
  * hooks in WordPress to change core functionality.
  *
  * @link https://codex.wordpress.org/Theme_Development
- * @package Semantique Child
- * @since Semantique Child 1.0.0
+ * @package Sem Child
+ * @since Sem Child 1.0.0
  */
+if ( ! function_exists( 'semantic_child_scripts' ) ) { 
+	function semantic_child_scripts() {
+		wp_dequeue_style('main-stylesheet');
+/*
+Append items to this array to load styles.
 
-function semanticchild_enqueue_styles() {
+array key would be the file name (and path).
 
-    $parent_style = 'parent-style'; // This is 'semantic-style' for the Twenty Fifteen theme.
-
-    //wp_enqueue_style( $parent_style, get_template_directory_uri() . '/style.css' );
-    wp_enqueue_style( 'child-style',
-        get_stylesheet_directory_uri() . '/style.css',
-        array( $parent_style ),
-        wp_get_theme()->get('Version')
-    );
+array(
+	'dep' => array(),
+	'ver' => '1.0.0',
+	'media' => 'all',
+)
+*/
+		$styles = array(
+			'assets/css/app.css' => array(),
+		);
+		foreach($styles as $file => $style) {
+			$dep = isset($style['dep'])? $style['dep'] : array();
+			$ver = isset($style['ver'])? $style['ver'] : '1.0.0';
+			$media = isset($style['media']) ? $style['media'] : 'all';
+			wp_enqueue_style( 'child-stylesheet', get_stylesheet_directory_uri() . '/' . $file, $dep, $ver, $media);
+		}
+	}
+	add_action( 'wp_enqueue_scripts', 'semantic_child_scripts', 30);
 }
-add_action( 'wp_enqueue_scripts', 'semanticchild_enqueue_styles' );
-?>
-
-
-

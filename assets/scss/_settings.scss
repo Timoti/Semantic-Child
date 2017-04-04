@@ -3,9 +3,6 @@
 //
 //  Table of Contents:
 //
-
-//   0. Preload
-
 //   1. Global
 //   2. Breakpoints
 //   3. The Grid
@@ -28,111 +25,77 @@
 //  20. Label
 //  21. Media Object
 //  22. Menu
-//  23. Off-canvas
-//  24. Orbit
-//  25. Pagination
-//  26. Progress Bar
-//  27. Reveal
-//  28. Slider
-//  29. Switch
-//  30. Table
-//  31. Tabs
-//  32. Thumbnail
-//  33. Title Bar
-//  34. Tooltip
-//  35. Top Bar
+//  23. Meter
+//  24. Off-canvas
+//  25. Orbit
+//  26. Pagination
+//  27. Progress Bar
+//  28. Reveal
+//  29. Slider
+//  30. Switch
+//  31. Table
+//  32. Tabs
+//  33. Thumbnail
+//  34. Title Bar
+//  35. Tooltip
+//  36. Top Bar
 
-@import 'util/util';
-
-
-// 0. Preload
-// ---------
-// project specific variables for abstraction
-
-
+@import '../../bower_components/foundation-sites/scss/util/util';
 
 // 1. Global
 // ---------
 
-
 // BRAND COLOURS (custom)
-$col-brand-1: rgb(65, 197, 222); // blue
-$col-brand-2: rgb(243, 122, 31); // orange
-$col-brand-3: rgb(53, 184, 19); //gold
-$col-brand-4: rgb(75, 189, 32); //olive
+//$col-brand-1: rgb(65, 197, 222); // blue
+//$col-brand-2: rgb(243, 122, 31); // //orange
+//$col-brand-3: rgb(53, 184, 19); //gold
+//$col-brand-4: rgb(75, 189, 32); //olive
 
-$col-brand-1-bkg: lighten($col-brand-1, 30%);
-$col-brand-2-bkg: lighten($col-brand-2, 30%);
-$col-brand-3-bkg: lighten($col-brand-3, 30%);
-$col-brand-4-bkg: lighten($col-brand-4, 30%);
-
-$global-width: rem-calc(900);
 $global-font-size: 100%;
+$global-width: rem-calc(1200);
 $global-lineheight: 1.5;
-
-$primary-color: $col-brand-1; 
-$secondary-color: #cacaca;
-
-
-$success-color: #3adb76;
-$warning-color: #ffae00;
-$alert-color: #ec5840;
+$foundation-palette: (
+  primary: #2199e8,
+  secondary: #777,
+  success: #3adb76,
+  warning: #ffae00,
+  alert: #ec5840,
+);
 $light-gray: #e6e6e6;
 $medium-gray: #cacaca;
 $dark-gray: #8a8a8a;
 $black: #0a0a0a;
 $white: #fefefe;
-
-
-
-
-$body-background: darken($white, 5%);
+$body-background: $white;
 $body-font-color: $black;
-$body-font-family:  Roboto,'Helvetica Neue', Helvetica, Arial, sans-serif;
+$body-font-family: 'Helvetica Neue', Helvetica, Roboto, Arial, sans-serif;
 $body-antialiased: true;
 $global-margin: 1rem;
-$global-padding: 1rem;
+$global-padding: 1rem;// BRAND COLOURS (custom)
+$col-brand-1: rgb(65, 197, 222); // blue
+$col-brand-2: rgb(243, 122, 31); // orange
+$col-brand-3: rgb(53, 184, 19); //gold
+$col-brand-4: rgb(75, 189, 32); //olive
 $global-weight-normal: normal;
 $global-weight-bold: bold;
 $global-radius: 0;
 $global-text-direction: ltr;
-$rem-base: 16px;
+$global-flexbox: false;
+$print-transparent-backgrounds: true;
 
-
-
-$global-margin-tight: $global-margin/2;
-$global-padding-tight: $global-padding/2;
+@include add-foundation-colors;
 
 // 2. Breakpoints
 // --------------
 
 $breakpoints: (
-	small: 0,
-	medium: 480px,
-	medium-2: 580px,
-	medium-3: 700px,	
-	large: 850px,
-	large-2: 950px,
-	large-3: 1025px,
-	xlarge: 1100px,
-	xlarge-2: 1200px,
-	xlarge-3: 1300px,
-	xxlarge: 1425px,
-	xxlarge-2: 1650px,
-	xxlarge-3: 1800px,
+  small: 0,
+  medium: 640px,
+  large: 1024px,
+  xlarge: 1200px,
+  xxlarge: 1440px,
 );
-
-
-$medium-2: 580px;
-$medium-3: 700px; 
-
-$breakpoint-classes: (small medium  medium-2  medium-3 large large-2 large-3 xlarge xlarge-2 xlarge-3 xxlarge xxlarge-2 xxlarge-3);
-
-
-
-//$medium-2-up: $screen !default;
-
-
+$breakpoint-classes: (small medium large);
 
 // 3. The Grid
 // -----------
@@ -150,62 +113,65 @@ $grid-row-width: $global-width;
 $grid-column-align-edge: true;
 $block-grid-max: 8;
 
+
 // SUSY GRID
 
 $susy: (
-	flow: ltr,
-	math: fluid,
-	output: isolate float,
-	gutter-position: after,
-	container: 50em,
-	container-position: center,
-	columns: 8,
-	gutters: 0.5,
-	column-width: false,
-	global-box-sizing: content-box,
-	last-flow: to,
-	debug: (
-		image: hide,
-		color: rgba(#0CFF32, .225),
-		output: background,
-		toggle: top right,
-	),
-	use-custom: (
-		background-image: true,
-		background-options: false,
-		box-sizing: true,
-		clearfix: false,
-		rem: true,
-	)
+  flow: ltr,
+  math: fluid,
+  output: isolate float,
+  gutter-position: after,
+  container: 50em,
+  container-position: center,
+  columns: 8,
+  gutters: 0.5,
+  column-width: false,
+  global-box-sizing: content-box,
+  last-flow: to,
+  debug: (
+    image: hide,
+    color: rgba(#0CFF32, .225),
+    output: background,
+    toggle: top right,
+  ),
+  use-custom: (
+    background-image: true,
+    background-options: false,
+    box-sizing: true,
+    clearfix: false,
+    rem: true,
+  )
 );
 
 
 $susy-medium: (
-	flow: ltr,
-	math: fluid,
-	output: isolate float,
-	gutter-position: after,
-	container: 55em,
-	container-position: center,
-	columns: 12,
-	gutters: 0.5,
-	column-width: false,
-	global-box-sizing: content-box,
-	last-flow: to,
-	debug: (
-		image: hide,
-		color: rgba(#FFFF00, .125),
-		output: background,
-		toggle: top right,
-	),
-	use-custom: (
-		background-image: true,
-		background-options: false,
-		box-sizing: true,
-		clearfix: false,
-		rem: true,
-	)
+  flow: ltr,
+  math: fluid,
+  output: isolate float,
+  gutter-position: after,
+  container: 55em,
+  container-position: center,
+  columns: 12,
+  gutters: 0.5,
+  column-width: false,
+  global-box-sizing: content-box,
+  last-flow: to,
+  debug: (
+    image: hide,
+    color: rgba(#FFFF00, .125),
+    output: background,
+    toggle: top right,
+  ),
+  use-custom: (
+    background-image: true,
+    background-options: false,
+    box-sizing: true,
+    clearfix: false,
+    rem: true,
+  )
 );
+
+
 
 // 4. Base Typography
 // ------------------
@@ -215,35 +181,30 @@ $header-font-weight: $global-weight-normal;
 $header-font-style: normal;
 $font-family-monospace: Consolas, 'Liberation Mono', Courier, monospace;
 $header-sizes: (
-	small: (
-		'h1': 24,
-		'h2': 20,
-		'h3': 19,
-		'h4': 18,
-		'h5': 17,
-		'h6': 16,
-	),
-	medium: (
-		'h1': 48,
-		'h2': 40,
-		'h3': 31,
-		'h4': 25,
-		'h5': 20,
-		'h6': 16,
-	),
+  small: (
+    'h1': 24,
+    'h2': 20,
+    'h3': 19,
+    'h4': 18,
+    'h5': 17,
+    'h6': 16,
+  ),
+  medium: (
+    'h1': 48,
+    'h2': 40,
+    'h3': 31,
+    'h4': 25,
+    'h5': 20,
+    'h6': 16,
+  ),
 );
-
-
-
 $header-color: inherit;
-//$header-lineheight: 1.4; //typefix
-$header-lineheight: 1.1;
+$header-lineheight: 1.4;
 $header-margin-bottom: 0.5rem;
 $header-text-rendering: optimizeLegibility;
 $small-font-size: 80%;
 $header-small-font-color: $medium-gray;
 $paragraph-lineheight: 1.6;
-
 $paragraph-margin-bottom: 1rem;
 $paragraph-text-rendering: optimizeLegibility;
 $code-color: $black;
@@ -252,8 +213,7 @@ $code-font-weight: $global-weight-normal;
 $code-background: $light-gray;
 $code-border: 1px solid $medium-gray;
 $code-padding: rem-calc(2 5 1);
-//$anchor-color: $primary-color;
-	$anchor-color: darken($col-brand-1,10%);
+$anchor-color: $primary-color;
 $anchor-color-hover: scale-color($anchor-color, $lightness: -14%);
 $anchor-text-decoration: none;
 $anchor-text-decoration-hover: none;
@@ -321,6 +281,7 @@ $accordion-content-padding: 1rem;
 // -----------------
 
 $accordionmenu-arrows: true;
+$accordionmenu-arrow-color: $primary-color;
 
 // 9. Badge
 // --------
@@ -355,10 +316,10 @@ $button-color: #fff;
 $button-color-alt: #000;
 $button-radius: $global-radius;
 $button-sizes: (
-	tiny: 0.6rem,
-	small: 0.75rem,
-	default: 0.9rem,
-	large: 1.25rem,
+  tiny: 0.6rem,
+  small: 0.75rem,
+  default: 0.9rem,
+  large: 1.25rem,
 );
 $button-opacity-disabled: 0.25;
 
@@ -399,6 +360,7 @@ $closebutton-color-hover: $black;
 
 $drilldown-transition: transform 0.15s linear;
 $drilldown-arrows: true;
+$drilldown-arrow-color: $primary-color;
 $drilldown-background: $white;
 
 // 16. Dropdown
@@ -410,15 +372,16 @@ $dropdown-font-size: 16rem;
 $dropdown-width: 300px;
 $dropdown-radius: $global-radius;
 $dropdown-sizes: (
-	tiny: 100px,
-	small: 200px,
-	large: 400px,
-	);
+  tiny: 100px,
+  small: 200px,
+  large: 400px,
+);
 
 // 17. Dropdown Menu
 // -----------------
 
 $dropdownmenu-arrows: true;
+$dropdownmenu-arrow-color: $anchor-color;
 $dropdownmenu-min-width: 200px;
 $dropdownmenu-background: $white;
 $dropdownmenu-border: 1px solid $medium-gray;
@@ -426,7 +389,6 @@ $dropdownmenu-border: 1px solid $medium-gray;
 // 18. Flex Video
 // --------------
 
-$flexvideo-padding-top: rem-calc(25);
 $flexvideo-margin-bottom: rem-calc(16);
 $flexvideo-ratio: 4 by 3;
 $flexvideo-ratio-widescreen: 16 by 9;
@@ -450,10 +412,11 @@ $form-label-color: $black;
 $form-label-font-size: rem-calc(14);
 $form-label-font-weight: $global-weight-normal;
 $form-label-line-height: 1.8;
-$select-background: #fafafa;
+$select-background: $white;
 $select-triangle-color: #333;
 $select-radius: $global-radius;
 $input-color: $black;
+$input-placeholder-color: $medium-gray;
 $input-font-family: inherit;
 $input-font-size: rem-calc(16);
 $input-background: $white;
@@ -490,10 +453,21 @@ $mediaobject-image-width-stacked: 100%;
 $menu-margin: 0;
 $menu-margin-nested: 1rem;
 $menu-item-padding: 0.7rem 1rem;
+$menu-item-color-active: $white;
+$menu-item-background-active: #121212;
 $menu-icon-spacing: 0.25rem;
-$menu-expand-max: 6;
 
-// 23. Off-canvas
+// 23. Meter
+// ---------
+
+$meter-height: 1rem;
+$meter-radius: $global-radius;
+$meter-background: $medium-gray;
+$meter-fill-good: $success-color;
+$meter-fill-medium: $warning-color;
+$meter-fill-bad: $alert-color;
+
+// 24. Off-canvas
 // --------------
 
 $offcanvas-size: 250px;
@@ -506,7 +480,7 @@ $offcanvas-exit-background: rgba($white, 0.25);
 $maincontent-class: 'off-canvas-content';
 $maincontent-shadow: 0 0 10px rgba($black, 0.5);
 
-// 24. Orbit
+// 25. Orbit
 // ---------
 
 $orbit-bullet-background: $medium-gray;
@@ -521,7 +495,7 @@ $orbit-control-background-hover: rgba($black, 0.5);
 $orbit-control-padding: 1rem;
 $orbit-control-zindex: 10;
 
-// 25. Pagination
+// 26. Pagination
 // --------------
 
 $pagination-font-size: rem-calc(14);
@@ -538,7 +512,7 @@ $pagination-ellipsis-color: $black;
 $pagination-mobile-items: false;
 $pagination-arrows: true;
 
-// 26. Progress Bar
+// 27. Progress Bar
 // ----------------
 
 $progress-height: 1rem;
@@ -547,7 +521,7 @@ $progress-margin-bottom: $global-margin;
 $progress-meter-background: $primary-color;
 $progress-radius: $global-radius;
 
-// 27. Reveal
+// 28. Reveal
 // ----------
 
 $reveal-background: $white;
@@ -560,7 +534,7 @@ $reveal-radius: $global-radius;
 $reveal-zindex: 1005;
 $reveal-overlay-background: rgba($black, 0.45);
 
-// 28. Slider
+// 29. Slider
 // ----------
 
 $slider-height: 0.5rem;
@@ -574,7 +548,7 @@ $slider-opacity-disabled: 0.25;
 $slider-radius: $global-radius;
 $slider-transition: all 0.2s ease-in-out;
 
-// 29. Switch
+// 30. Switch
 // ----------
 
 $switch-background: $medium-gray;
@@ -590,10 +564,10 @@ $switch-paddle-offset: 0.25rem;
 $switch-paddle-radius: $global-radius;
 $switch-paddle-transition: all 0.25s ease-out;
 
-// 30. Table
+// 31. Table
 // ---------
 
-$table-background: transparent;
+$table-background: $white;
 $table-color-scale: 5%;
 $table-border: 1px solid smart-scale($table-background, $table-color-scale);
 $table-padding: rem-calc(8 10 10);
@@ -607,23 +581,22 @@ $table-foot-background: smart-scale($table-background, $table-color-scale);
 $table-head-font-color: $body-font-color;
 $show-header-for-stacked: false;
 
-// 31. Tabs
+// 32. Tabs
 // --------
 
 $tab-margin: 0;
-$tab-background: transparent;
+$tab-background: $white;
 $tab-background-active: $light-gray;
-$tab-border: $light-gray;
 $tab-item-color: foreground($tab-background, $primary-color);
 $tab-item-background-hover: $white;
 $tab-item-padding: 1.25rem 1.5rem;
 $tab-expand-max: 6;
 $tab-content-background: $white;
-$tab-content-border: transparent;
+$tab-content-border: $light-gray;
 $tab-content-color: foreground($tab-background, $primary-color);
 $tab-content-padding: 1rem;
 
-// 32. Thumbnail
+// 33. Thumbnail
 // -------------
 
 $thumbnail-border: solid 4px $white;
@@ -633,7 +606,7 @@ $thumbnail-shadow-hover: 0 0 6px 1px rgba($primary-color, 0.5);
 $thumbnail-transition: box-shadow 200ms ease-out;
 $thumbnail-radius: $global-radius;
 
-// 33. Title Bar
+// 34. Title Bar
 // -------------
 
 $titlebar-background: $black;
@@ -644,7 +617,7 @@ $titlebar-icon-color: $white;
 $titlebar-icon-color-hover: $medium-gray;
 $titlebar-icon-spacing: 0.25rem;
 
-// 34. Tooltip
+// 35. Tooltip
 // -----------
 
 $tooltip-background-color: $black;
@@ -653,17 +626,17 @@ $tooltip-padding: 0.75rem;
 $tooltip-font-size: $small-font-size;
 $tooltip-pip-width: 0.75rem;
 $tooltip-pip-height: $tooltip-pip-width * 0.866;
-$tooltip-pip-offset: 1.25rem;
 $tooltip-radius: $global-radius;
 
-// 35. Top Bar
+// 36. Top Bar
 // -----------
 
-$topbar-padding: 0.5rem;
-$topbar-background: $light-gray;
-$topbar-link-color: $primary-color;
+$topbar-padding: 0;
+$topbar-background: #121212;
+$topbar-submenu-background: $topbar-background;
+$topbar-link-color: #fff;
 $topbar-input-width: 200px;
-
+$topbar-unstack-breakpoint: medium;
 
 
 // LEGACY MAPPING
@@ -673,87 +646,3 @@ $topbar-input-width: 200px;
 
 $horz-spacing-unit: $global-padding*2;
 $vert-spacing-unit: $global-padding*2;
-
-// TYPE SETTINGS
-
-$type-size-lvl_uber: 3.1888rem;
-$type-size-lvl_0: 2.7925rem;
-$type-size-lvl_1: 2.441rem;
-$type-size-lvl_2: 1.953rem;
-$type-size-lvl_3: 1.563rem;
-$type-size-lvl_4: 1.25rem;
-
-
-//$fontsize-content; .8rem;
-$type-size-giant: 4rem; //depreciated
-$type-size-large: 2rem; //depreciated
-$type-size-blockhead: 1.6rem; //depreciated
-$type-size-content: 1.3rem;
-$type-size-normal: 1rem;
-$type-size-small: 0.85rem;
-$type-size-tiny: 0.7em;
-$type-size-nano: 0.5rem;
-
-
-
-
-
-
-//$type-size-feature-liquid: 2.0vw;
-$type-size-feature-liquid: 1.60vw;
-
-@mixin secondary-type-scale {
-	font-size: $type-size-feature-liquid *0.95;
-@include breakpoint(medium) {
-	font-size: $type-size-feature-liquid *1.0;
-}
-@include breakpoint($desk) {
-	font-size: 1.3rem;
-}
-	}
-
-$type-letterspace-tight: 0;
-$type-letterspace-base: 0.05em;
-$type-letterspace-loose: 0.15em;
-
-// superfish menus
-//MENU COLOURS (custom)
-$col-link-bkg: rgba($light-gray, 0.9);
-$col-link-bkg-body: rgba($body-background, 0.9);
-$col-link-bkg-active: rgba($white, 0.85);
-$col-tab-border: lighten($medium-gray, 0%);
-//may overlap with superfish styling
-
-$tab-bar-height-md: 2.75rem;
-$tab-bar-height-lg: 4.75rem;
-
-
-
-// SIMPLE MODULAR SCALE
-
-// @for $i from 1 through 6 {
-// 	h#{$i} {
-// 		//font-size: modular-scale(6 - $i);
-// 		font-size: modular-scale((6 - $i), 0.75em, 1.25);
-// 		}
-// 	}
-
-
-// ABSTRACTIONS  - TMP
-
-@mixin tabbed-link {
-	border: 1px solid $col-tab-border;
-	color: $dark-gray;
-	padding: 0.75em 1em;
-	.sf-hover & {
-		border-bottom-color: $col-link-bkg-active;
-		background: $col-link-bkg-active; 
-		}
-	}
-
-@mixin hoverable {
-	opacity: 0.7;
-	&:hover {
-		opacity: 1;
-		}
-	}
