@@ -1,4 +1,8 @@
-/* Navigation breakpoints */
+
+
+$menu-height: 45px;
+
+// Breakpoint toggling
 
 .desktop-menu, 
 .top-bar-left {
@@ -6,108 +10,137 @@
 	}
 
 #mobile-menu, 
+.mobile-menu, 
 .title-bar {
 	@include hide-for(medium);
 	}
 
-/* Mobile menu */
+
+
+// MOBILE menu - off canvas
 
 .off-canvas {
- > ul.menu {
+
+	> ul.menu {
 		height: 100vh;
 		padding: 1rem;
-		}
-	}
+
+		a {
+			color: $white;
+			font-weight: 600;
+			font-size: rem-calc(18);
+			opacity: .75;
+			}
+
+		.is-accordion-submenu-parent > a::after {
+			display: block;
+			width: 0;
+			height: 0;
+			border: inset 6px;
+			content: '';
+			border-bottom-width: 0;
+			border-top-style: solid;
+			border-color: $white transparent transparent;
+			position: absolute;
+			top: 50%;
+			margin-top: -3px;
+			right: 1rem;
+			}
+	
+		.active > a { 
+			background-color: lighten($outer-space, 10%); 	
+			}
+		} //.menu
+	} //.off-canvas
 
 .title-bar-title {
 	a {
 		font-size: 1rem;
-		color: #B9B9B9;
+		color: $medium-gray;
 		}
 	}
 
-/* Tablet and desktop menu */
+
+
+
+
+
+// MEDIUM & LARGE menu
 .top-bar {
 
-	.menu .home a {
-		font-size: 1rem;
-		color: #B9B9B9;
-		}
+	&:hover:not(.button) {
+			background-color:$dark-gray;
+			}
 
-	.menu a {
-		height: 45px;
-		line-height: 45px;
-		color: #e6e6e6;
+	.menu {
+
+	a {
+		height: $menu-height;
+		line-height: $menu-height;
+		color: $light-gray;
 		padding-top: 0;
 		padding-bottom: 0;
 		font-weight: bold;
 		font-size: 0.8rem;
 		line-height: 1;
+		}
 
-		&:hover:not(.button) {
-			background-color: #2a2a2a;
+	.home a {
+		font-size: 1rem;
+		color: $medium-gray;
+		}
+
+
+	.active > a {
+		background-color: lighten($outer-space, 10%);
+		}
+
+	> li:not(.menu-text) > a { 
+		padding: 1rem;
+		}
+
+	li:not(:last-child) {
+		border-right: 1px solid $dark-gray;
+		}
+
+	&.dropdown {
+		.submenu {
+			border: 0;
 			}
+		.has-submenu.is-down-arrow a {
+			padding-right: 1rem;
+			}
+		.has-submenu.is-down-arrow > a::after {
+			border: 0;
+			}
+		&:first-child > li.is-dropdown-submenu-parent > a::after { display: none;
+			}
+	} //.dropdown
+
+} //.menu
+
+// Basic styles for post navigation. 
+// Nicolas Gallagher's "Micro clearfix"
+// https://css-tricks.com/snippets/css/clear-fix/
+.post-navigation {
+	&:before,
+	&:after {
+		content: "";
+		display: table;
 		}
-
-	.menu>li:not(.menu-text)>a { padding: 1rem;   }
-	.menu li:not(:last-child) { border-right: 1px solid #4e4e4e;  }
-
-	.dropdown.menu .submenu {
-		background-color: #121212;
-		color: #e6e6e6;
-		border: 0;
+		&:after {
+		clear:both;
 		}
-
-	.dropdown.menu .has-submenu.is-down-arrow a { padding-right: 1rem;  }
-	.dropdown.menu .has-submenu.is-down-arrow > a::after { border: 0;   }
-
-	.dropdown.menu:first-child >
-		li.is-dropdown-submenu-parent >
-		a::after {
-			display: none;
-				}
-
-	}
-/* Basic styles for post navigation. Nicolas Gallagher's "Micro clearfix" https://css-tricks.com/snippets/css/clear-fix/ */
-.post-navigation:before,
-.post-navigation:after {
-	content: "";
-			display: table;
-	}
-.post-navigation:after {
-	clear:both;
-	}
-/* Text meant only for screen readers. Addresses part of theme-check issue #840. https://github.com/Automattic/_s/blob/master/style.css */
-.screen-reader-text {
-	clip: rect(1px, 1px, 1px, 1px);
-	position: absolute !important;
-	height: 1px;
-	width: 1px;
-	overflow: hidden;
 	}
 
-.screen-reader-text:focus {
-	background-color: #f1f1f1;
-	border-radius: 3px;
-	box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
-	clip: auto !important;
-	color: #21759b;
-	display: block;
-	font-size: 14px;
-	font-size: 0.875rem;
-	font-weight: bold;
-	height: auto;
-	left: 5px;
-	line-height: normal;
-	padding: 15px 23px 14px;
-	text-decoration: none;
-	top: 5px;
-	width: auto;
-	z-index: 100000; /* Above WP toolbar. */
-	}
-.nav-previous {
+.nav-previous { 
 	float:left;
 	}
 .nav-next {
 	float:right;
 	}
+
+} //top-bar
+
+
+

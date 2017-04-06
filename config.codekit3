@@ -7,7 +7,7 @@
 		"uuidString": "63C35169-8F86-40C2-BB80-2B3D8B957BE1"
 		}
 	],
-"creatorBuild": "25704",
+"creatorBuild": "25813",
 "files": {
 	"\/.babelrc": {
 		"ft": 8192,
@@ -188,41 +188,45 @@
 	"\/assets\/images\/icons\/apple-touch-icon-114x114.png": {
 		"ft": 32768,
 		"iS": 5526,
-		"l": 1,
 		"oA": 0,
 		"oAP": "\/assets\/images\/icons\/apple-touch-icon-114x114.png",
 		"oF": 0,
+		"oIPL": 0,
 		"opt": 0,
+		"oT": 1,
 		"q": 100
 		},
 	"\/assets\/images\/icons\/apple-touch-icon-144x144.png": {
 		"ft": 32768,
 		"iS": 4470,
-		"l": 1,
 		"oA": 0,
 		"oAP": "\/assets\/images\/icons\/apple-touch-icon-144x144.png",
 		"oF": 0,
+		"oIPL": 0,
 		"opt": 0,
+		"oT": 1,
 		"q": 100
 		},
 	"\/assets\/images\/icons\/apple-touch-icon-72x72.png": {
 		"ft": 32768,
 		"iS": 4434,
-		"l": 1,
 		"oA": 0,
 		"oAP": "\/assets\/images\/icons\/apple-touch-icon-72x72.png",
 		"oF": 0,
+		"oIPL": 0,
 		"opt": 0,
+		"oT": 1,
 		"q": 100
 		},
 	"\/assets\/images\/icons\/apple-touch-icon.png": {
 		"ft": 32768,
 		"iS": 4328,
-		"l": 1,
 		"oA": 0,
 		"oAP": "\/assets\/images\/icons\/apple-touch-icon.png",
 		"oF": 0,
+		"oIPL": 0,
 		"opt": 0,
+		"oT": 1,
 		"q": 100
 		},
 	"\/assets\/images\/icons\/favicon.ico": {
@@ -2828,7 +2832,7 @@
 		"dS": 0,
 		"ft": 4,
 		"ma": 1,
-		"oA": 2,
+		"oA": 1,
 		"oAP": "\/bower_components\/foundation-sites\/scss\/foundation.scss",
 		"oF": 0,
 		"oS": 0,
@@ -4505,7 +4509,7 @@
 		"dS": 0,
 		"ft": 4,
 		"ma": 1,
-		"oA": 2,
+		"oA": 1,
 		"oAP": "\/bower_components\/motion-ui\/src\/motion-ui.scss",
 		"oF": 0,
 		"oS": 0,
@@ -5507,11 +5511,12 @@
 	"\/screenshot.png": {
 		"ft": 32768,
 		"iS": 12497,
-		"l": 1,
 		"oA": 0,
 		"oAP": "\/screenshot.png",
 		"oF": 0,
+		"oIPL": 0,
 		"opt": 1,
+		"oT": 1,
 		"q": 100
 		},
 	"\/style.css": {
@@ -6493,6 +6498,10 @@
 			"active": 0,
 			"optionString": ""
 			},
+		"no-prototype-builtins": {
+			"active": 0,
+			"optionString": ""
+			},
 		"no-redeclare": {
 			"active": 1,
 			"optionString": "{'builtinGlobals': false}"
@@ -7317,14 +7326,6 @@
 		"orderOutput": 0,
 		"outputStyle": 1
 		},
-	"languageDefaultsJSX": {
-		"autoOutputAction": 0,
-		"autoOutputPathFilenamePattern": "*.js",
-		"autoOutputPathRelativePath": "",
-		"autoOutputPathReplace1": "jsx",
-		"autoOutputPathReplace2": "js",
-		"autoOutputPathStyle": 0
-		},
 	"languageDefaultsKIT": {
 		"autoOutputAction": 0,
 		"autoOutputPathFilenamePattern": "*.html",
@@ -7387,7 +7388,7 @@
 		"autoOutputPathReplace1": "",
 		"autoOutputPathReplace2": "",
 		"autoOutputPathStyle": 0,
-		"enableLossy": 1,
+		"optimizerType": 1,
 		"quality": 100
 		},
 	"languageDefaultsPUG": {
