@@ -28,14 +28,28 @@ array(
 )
 */
 		$styles = array(
-			'assets/css/app.css' => array(),
+			'child-stylesheet' => 'assets/css/app.css',
 		);
-		foreach($styles as $file => $style) {
+		foreach($styles as $key => $value) {
 			$dep = isset($style['dep'])? $style['dep'] : array();
 			$ver = isset($style['ver'])? $style['ver'] : '1.0.0';
 			$media = isset($style['media']) ? $style['media'] : 'all';
-			wp_enqueue_style( 'child-stylesheet', get_stylesheet_directory_uri() . '/' . $file, $dep, $ver, $media);
+			wp_enqueue_style( $key, get_stylesheet_directory_uri() . '/' . $value, $dep, $ver, $media);
+		}
+
+		wp_deregister_script('jquery');
+		wp_deregister_script('foundation_mobmenu_js');
+		wp_deregister_script('js_app');
+		$jss = array(
+				'child-app' => 'assets/js/app.js',
+				'child-off-canvas' => 'assets/js/off-canvas.js',
+		);
+		foreach ($jss as $key => $value) {
+			wp_enqueue_script($key, get_stylesheet_directory_uri() . '/' . $value, array(), false, true);
 		}
 	}
 	add_action( 'wp_enqueue_scripts', 'semantic_child_scripts', 30);
 }
+
+
+//  add js  - assets/js/offCanvas.js
